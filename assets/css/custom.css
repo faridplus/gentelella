@@ -561,7 +561,7 @@ ul li.select2-search.select2-search--inline {
     font-size: 20px;
 }
 
-body {
-    min-height: 1000px;
-    height: 1000px;
+.nav-md .container.body .right_col {
+    min-height: 1200px;
+    height: 1200px;
 }
