@@ -560,3 +560,8 @@ ul li.select2-search.select2-search--inline {
 #comment-list-gridviewpjax div p{
     font-size: 20px;
 }
+
+body {
+    min-height: 1000px;
+    height: 1000px;
+}
