@@ -29,13 +29,16 @@ IEAssetBundle::register($this);
     <body class="nav-md">
     <?php $this->beginBody() ?>
         <div class="container body">
-        <?php if(Utility::IsNullOrEmpty(Yii::$app->session->getAllFlashes())): ?>
-            <div class="flash-message-container" style="display: none">
-                <?= FlashMessage::widget() ?>
-            </div>
-        <?php else: ?>
+        <?php
+        $allFlashes = Yii::$app->session->getAllFlashes();
+        if(!Utility::IsNullOrEmpty($allFlashes)): ?>
             <div class="flash-message-container">
-                <?= FlashMessage::widget() ?>
+                <?php
+                foreach ($allFlashes as $type => $message) {
+                    if(count($message) > 0)
+                        echo '<div style="display:none" class="flash-message-item" data-type="' . $type . '">' . $message[0] . '</div>';
+                }
+                ?>
             </div>
         <?php endif; ?>
             <div class="main_container">

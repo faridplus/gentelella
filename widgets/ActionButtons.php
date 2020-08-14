@@ -125,12 +125,14 @@ class ActionButtons extends Widget
                 case 'index':
                     $label = empty($btnOptions['label']) ? 'مدیریت' : $btnOptions['label'];
                     $icon = empty($btnOptions['icon']) ? 'tasks' : $btnOptions['icon'];
+                    $type = empty($btnOptions['type']) ? 'primary' : $btnOptions['type'];
+                    $url = empty($btnOptions['url']) ? ['index'] : $btnOptions['url'];
                     if ($isActive) {
                         echo Button::widget([
-                            'url' => ['index'],
+                            'url' => $url,
                             'label' => $label,
                             'icon' => $icon,
-                            'type' => 'info',
+                            'type' => $type,
                             'visibleFor' => $visibleFor,
                             'visible' => $visible,
                             'options' => $options,
