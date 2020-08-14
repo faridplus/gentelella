@@ -1,14 +1,3 @@
-if ($(".flash-message-container").length > 0) {
-    $(".flash-message-container")
-        .children()
-        .each(function(index) {
-            let $alertDiv = $(this);
-            setTimeout(function() {
-                $alertDiv.alert("close");
-                $(".flash-message-container").hide();
-            }, index * 1000 + 1000);
-        });
-}
 
 // Sticky elements
 $("document").ready(function() {
@@ -131,7 +120,18 @@ $("document").ready(function() {
                 });
             }
 	  });
-	}
+    }
+
+    // -------------------------------------------------
+    // -- notify
+    if ($(".flash-message-container").length > 0) {
+        $(".flash-message-container")
+            .find('.flash-message-item')
+            .each(function(index) {
+                console.log($(this).text());
+                notify($(this).text(), $(this).data('type'));
+            });
+    }
 });
 
 // ----------------------------------------------------------------
@@ -211,6 +211,9 @@ function getUrlVars()
 function notify(message, type, showOverlay = false , delay = '3000'){
     let options = {};
     options.text = message;
+
+    if(type == 'danger')
+        type = 'error';
     options.type = type;
     options.theme = 'nest';
     options.progressBar = true;
